@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+
+<body>
+    <div class="signup-container">
+        <div class="avatar"></div>
+        <h2>Create new Account</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="username">USERNAME</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">CONFIRM PASSWORD</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+
+            <button type="submit" class="btn">Sign up</button>
+        </form>
+
+        <button class="google-btn">
+            <img src="google.png" alt="Google Logo" class="google-icon">
+            Sign up with Google
+        </button>
+
+        <p class="already-registered">Already Registered? <a href="loginas.html">Log in here.</a></p>
+    </div>
+
+    <script src="signin.js"></script>
+</body>
+
+</html>

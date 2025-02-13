@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #login-form, #register-form, #main-page {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-form">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="#register-form" onclick="toggleForms()">Register</a></p>
+    </div>
+
+    <div id="register-form" style="display: none;">
+        <h2>Register</h2>
+        <input type="email" id="register-email" placeholder="Email">
+        <input type="password" id="register-password" placeholder="Password">
+        <button onclick="register()">Register</button>
+        <p>Already have an account? <a href="#login-form" onclick="toggleForms()">Login</a></p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase.js"></script>
+    <script>
+        // Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBbprcPO8ABPn1jN2w8Svm16hs4cFsMHwc",
+            authDomain: "notespot-ce059.firebaseapp.com",
+            projectId: "notespot-ce059",
+            storageBucket: "notespot-ce059.appspot.com",
+            messagingSenderId: "879398581986",
+            appId: "1:879398581986:web:9d2ae9c6f61763f3e450bb",
+            measurementId: "G-CVSFH93G80"
+
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Function to toggle between login and registration forms
+        function toggleForms() {
+            var loginForm = document.getElementById("login-form");
+            var registerForm = document.getElementById("register-form");
+            loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+            registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
+        }
+
+        // Function to handle user registration
+        function register() {
+            var email = document.getElementById("register-email").value;
+            var password = document.getElementById("register-password").value;
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function() {
+                    alert("Registration successful!");
+                })
+                .catch(function(error) {
+                    alert("Registration failed: " + error.message);
+                });
+        }
+
+        // Function to handle user login
+        function login() {
+            var email = document.getElementById("login-email").value;
+            var password = document.getElementById("login-password").value;
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(function() {
+                    document.getElementById("login-form").style.display = "none";
+                    document.getElementById("register-form").style.display = "none";
+                    window.location.href = "popup.html";
+                })
+                .catch(function(error) {
+                    alert("Login failed: " + error.message);
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+/* General Reset */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #00c4ff; /* Light blue background */
+  position: relative; /* Needed for the pseudo-elements */
+  overflow: hidden; /* Prevent scrollbars due to circles */
+}
+
+/* Background Circles */
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* First Circle (Top Left) */
+body::before {
+  width: 250px;
+  height: 250px;
+  background-color: #6EB7EB;
+  top: -80px;
+  left: -50px;
+}
+
+/* Second Circle (Bottom Right) */
+body::after {
+  width: 400px;
+  height: 400px;
+  background-color: #3C52A3;
+  bottom: -150px;
+  right: -100px;
+  opacity: 0.8;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1; /* Ensure content stays above background circles */
+}
+
+/* Header */
+.header {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #00c4ff;
+  text-align: right;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.nav li {
+  display: inline;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav a.active {
+  color: #ffd700; /* Highlight current page link */
+}
+
+.nav a:hover {
+  color: #e0e0e0;
+}
+
+/* Content */
+.content {
+  width: 90%;
+  max-width: 800px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 100px; /* To compensate for the fixed header */
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2; /* Ensure content is above background circles */
+}
+
+/* Circle */
+.circle {
+  position: absolute;
+  top: -50px;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.circle img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* Text Container */
+.text-container {
+  margin-top: 30px;
+}
+
+.text-container h1 {
+  font-size: 28px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.text-container p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* File List */
+.file-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.file-name {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Save and Download Buttons */
+.btn {
+  padding: 15px 30px;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    text-align: center;
+    padding: 10px 15px;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .content {
+    padding: 20px;
+    margin-top: 120px;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav a {
+    font-size: 14px;
+  }
+
+  .content {
+    margin-top: 140px;
+  }
+
+  .circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .circle img {
+    width: 70%;
+    height: 70%;
+  }
+
+  .text-container h1 {
+    font-size: 22px;
+  }
+
+  .file-name {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Audio Transcription",
+  "version": "0.1",
+  "author": "First Last",
+  "description": "A description about your Chrome Extension...",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "declarativeContent",
+    "storage",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://www.gstatic.com/",
+    "https://*.firebaseio.com/",
+    "https://firebase.googleapis.com/"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["content.js", "login.js"],
+      "matches": ["https://meet.google.com/*"]
+    }
+  ]
+}

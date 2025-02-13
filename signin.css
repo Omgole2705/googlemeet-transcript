@@ -1,0 +1,204 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #75C6EE; /* Light blue background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Circles */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* First Circle (Top Left) */
+body::before {
+    width: 250px;
+    height: 250px;
+    background-color: #6EB7EB;
+    top: -100px; /* Moved above the top edge */
+    left: -50px; /* Moved to the left */
+}
+
+/* Second Circle (Bottom Right) */
+body::after {
+    width: 400px;
+    height: 400px;
+    background-color: #3C52A3;
+    bottom: -150px; /* Moved below the bottom edge */
+    right: -100px; /* Moved to the right */
+    opacity: 0.8;
+}
+
+/* Container */
+.container {
+    width: 100%; 
+    max-width: 400px; /* Set a maximum width for responsiveness */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Signup Container */
+.signup-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Heading */
+.signup-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label Styling */
+.form-group label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #808080;
+    margin-bottom: 5px;
+    display: block;
+    text-transform: uppercase;
+}
+
+/* Input Field Styling */
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #f2f2f2;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Input Focus */
+.form-group input:focus {
+    border-color: #00aaff;
+}
+
+/* Submit Button */
+.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff; /* Blue button color */ 
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background-color: #0062cc; /* Darker blue on hover */
+}
+
+/* Google Login Button */
+.google-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.google-btn:hover {
+    background-color: #f2f2f2;
+}
+
+/* Google Icon Styling */
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Already Registered Styling */
+.already-registered {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #808080;
+}
+
+.already-registered a {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+}
+
+.already-registered a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        max-width: 300px; /* Adjust maximum width for smaller screens */
+    }
+
+    .signup-container {
+        padding: 25px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+
+    .form-group input {
+        padding: 12px;
+    }
+
+    /* Smaller Circle Sizes for Mobile */
+    body::before {
+        width: 200px;
+        height: 200px;
+        top: -80px;
+        left: -30px;
+    }
+
+    body::after {
+        width: 300px;
+        height: 300px;
+        bottom: -100px;
+        right: -70px;
+    }
+}
